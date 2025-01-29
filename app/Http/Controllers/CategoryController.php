@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use App\Models\Category;
+
+
+class CategoryController extends Controller
+{
+
+    public function index()
+{
+    $categories = Category::all();
+    return view('welcome', ['categories' => $categories]);
+}
+
+    public function store(Request $request)
+{
+    $categories = new Category;
+    $categories->id = $request->id;
+    $categories->name = $request->name;
+
+    $categories->save();
+
+    return redirect('/');
+
+}
+    public function create() {
+        return view('categories.create');
+    }
+}

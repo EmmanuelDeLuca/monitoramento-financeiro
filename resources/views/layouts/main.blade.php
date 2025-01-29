@@ -30,16 +30,13 @@
                 </a>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="/" class="nav-link">Categoria</a>
+                        <a href="/categories/create" class="nav-link">Criar Categoria</a>
                     </li>
                     <li class="nav-item">
                         <a href="/" class="nav-link">Transação</a>
                     </li>
                     <li class="nav-item">
                         <a href="/" class="nav-link">Usuário</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/" class="nav-link">Listagens</a>
                     </li>
                 </ul>
             </div>
