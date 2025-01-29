@@ -4,11 +4,8 @@
 
 @section('content')
 
-@if(count($categories) == 0)
-<p class="m-10">Sem Categoria</p>
-@else
 <div id="search-container" class="m-4 col-md-6">
-        <form action="">
+        <form action="/" method="GET">
              <input type="text" id="search" name="search" class="form-control" placeholder="Procurar...">   
         </form>
 </div>
@@ -31,11 +28,14 @@
                 
         </tbody>
         @endforeach
+        @if(count($categories) == 0 && $search)
+                <p>Não há categorias com: {{$search}} <a href="/">Voltar</a></p>
+        @elseif(count($categories) == 0)
+                <p>Não há categorias</p>
+        @endif
 </table>
 </div>
 
-
-@endif
 
 
 @endsection

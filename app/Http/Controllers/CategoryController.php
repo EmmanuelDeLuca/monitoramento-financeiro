@@ -11,23 +11,40 @@ class CategoryController extends Controller
 {
 
     public function index()
-{
-    $categories = Category::all();
-    return view('welcome', ['categories' => $categories]);
-}
+    {
+        $search = request('search');
+        if ($search) {
+
+            $categories = Category::where([
+                ['name', 'like', '%'.$search.'%']
+                ])->get();
+        } else {
+            $categories = Category::all();
+        }
+
+
+        return view('welcome', ['categories' => $categories, 'search' => $search]);
+    }
 
     public function store(Request $request)
-{
-    $categories = new Category;
-    $categories->id = $request->id;
-    $categories->name = $request->name;
+    {
+        $categories = new Category;
+        $categories->id = $request->id;
+        $categories->name = $request->name;
 
-    $categories->save();
 
-    return redirect('/');
+        $user = auth()->user();
+        $categories->user_id = $user->id;
 
-}
-    public function create() {
+        $categories->save();
+
+        return redirect('/');
+    }
+
+
+
+    public function create()
+    {
         return view('categories.create');
     }
 }

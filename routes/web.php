@@ -15,9 +15,19 @@ use App\Http\Controllers\CategoryController;
 */
 
 Route::get('/', [CategoryController::class, 'index']);
-Route::get('/categories/create', [CategoryController::class, 'create']);
+Route::get('/categories/create', [CategoryController::class, 'create'])->middleware('auth');
 Route::post('/categories', [CategoryController::class, 'store']);
 
 
 
 
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

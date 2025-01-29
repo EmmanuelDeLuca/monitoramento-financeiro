@@ -32,12 +32,30 @@
                     <li class="nav-item">
                         <a href="/categories/create" class="nav-link">Criar Categoria</a>
                     </li>
+                    @auth
+                    
+
+                    
                     <li class="nav-item">
-                        <a href="/" class="nav-link">Transação</a>
+                        <a href="/dashboard" class="nav-link">Transação</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/" class="nav-link">Usuário</a>
+                        <form action="/logout" method="POST">
+                            @csrf
+                            <a href="/logout" class="nav-link" onclick="event.preventDefault();
+                            this.closest('form').submit();">Sair</a>
+                        </form>
                     </li>
+                    @endauth
+
+                    @guest
+                    <li class="nav-item">
+                        <a href="/login" class="nav-link">Entrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/register" class="nav-link">Cadastrar</a>
+                    </li>
+                    @endguest
                 </ul>
             </div>
         </nav>
