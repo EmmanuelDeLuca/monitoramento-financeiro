@@ -10,34 +10,37 @@ use App\Models\Category;
 
 class TransactionController extends Controller
 {
-    public function index()
-    {
-        $search = request('search');
-        if ($search) {
-
-            $categories = Transaction::where([
-                ['name', 'like', '%'.$search.'%']
-                ])->get();
-        } else {
-            $categories = Transaction::all();
-        }
-
-
-        return view('welcome', ['categories' => $categories, 'search' => $search]);
-    }
-
-    public function store(Request $request)
-    {
-        $categories = new Transaction;
-        $categories->id = $request->id;
-        $categories->name = $request->name;
-
-        $categories->save();
-
-        return redirect('/');
-    }
-    public function create()
-    {
-        return view('categories.create');
-    }
+     // 📌 Método para listar todas as transações
+     public function index()
+     {
+         $transactions = Transaction::with('user')->get();
+         $users = User::all();
+         $categories = Category::all();
+ 
+         return view('transactions.create', compact('transactions', 'users', 'categories'));
+     }
+ 
+     // 📌 Método para armazenar uma nova transação
+     public function store(Request $request)
+     {
+         $validated = $request->validate([
+             'user_id' => 'required|exists:users,id',
+             'category_id' => 'required|exists:categories,id',
+             'type' => 'required|in:income,expense',
+             'amount' => 'required|numeric|min:0.01',
+         ]);
+ 
+         Transaction::create($validated);
+ 
+         return redirect('/')->with('success', 'Transação criada com sucesso!');
+     }
+ 
+     // 📌 Método para deletar uma transação
+     public function destroy($id)
+     {
+         $transaction = Transaction::findOrFail($id);
+         $transaction->delete();
+ 
+         return redirect('/transactions')->with('success', 'Transação deletada com sucesso!');
+     }
 }

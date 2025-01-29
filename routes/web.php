@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TransactionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +19,10 @@ Route::get('/', [CategoryController::class, 'index']);
 Route::get('/categories/create', [CategoryController::class, 'create'])->middleware('auth');
 Route::post('/categories', [CategoryController::class, 'store']);
 
+
+Route::get('/transactions/create', [TransactionController::class, 'index']);
+Route::post('/transactions', [TransactionController::class, 'store']);
+// Route::delete('/transactions/create{id}', [TransactionController::class, 'destroy']);
 
 
 

@@ -37,7 +37,7 @@
 
                     
                     <li class="nav-item">
-                        <a href="/dashboard" class="nav-link">Transação</a>
+                        <a href="/transactions/create" class="nav-link">Transação</a>
                     </li>
                     <li class="nav-item">
                         <form action="/logout" method="POST">
