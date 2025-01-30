@@ -78,7 +78,7 @@
                     </td>
                     <td>R$ {{ number_format($transaction->amount, 2, ',', '.') }}</td>
                     <td>
-                        <form action="/transactions/{{ $transaction->id }}" method="POST" style="display:inline;">
+                        <form action="{{ route('transactions.destroy', $transaction->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">Deletar</button>

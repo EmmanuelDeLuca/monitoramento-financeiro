@@ -10,30 +10,37 @@
         </form>
 </div>
 <div class="m-4 col-md-6">
-<h2>Lista de Categorias</h2>
-<table class="table table-hover table-striped">
+    <h2>Lista de Categorias</h2>
+    <table class="table table-hover table-striped">
         <thead>
-                <tr>
-                        <th scope="col">#ID</th>
-                        <th scope="col">Categoria</th>
-                </tr>
+            <tr>
+                <th scope="col">#ID</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Ações</th>
+            </tr>
         </thead>
-        @foreach($categories as $category)
         <tbody>
+            @foreach($categories as $category)
                 <tr>
-                        <th scope="row">{{$category->id}}</th>
-                        <td>{{$category->name}}</td>
-                        <td><button class="btn btn-danger">Deletar</button></td>
+                    <th scope="row">{{ $category->id }}</th>
+                    <td>{{ $category->name }}</td>
+                    <td>
+                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Deletar</button>
+                        </form>
+                    </td>
                 </tr>
-                
+            @endforeach
         </tbody>
-        @endforeach
-        @if(count($categories) == 0 && $search)
-                <p>Não há categorias com: {{$search}} <a href="/">Voltar</a></p>
-        @elseif(count($categories) == 0)
-                <p>Não há categorias</p>
-        @endif
-</table>
+    </table>
+
+    @if(count($categories) == 0 && $search)
+        <p>Não há categorias com: {{ $search }} <a href="/">Voltar</a></p>
+    @elseif(count($categories) == 0)
+        <p>Não há categorias</p>
+    @endif
 </div>
 
 

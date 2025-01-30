@@ -10,7 +10,7 @@ use App\Models\Category;
 
 class TransactionController extends Controller
 {
-     // 📌 Método para listar todas as transações
+    
      public function index()
      {
          $transactions = Transaction::with('user')->get();
@@ -20,7 +20,7 @@ class TransactionController extends Controller
          return view('transactions.create', compact('transactions', 'users', 'categories'));
      }
  
-     // 📌 Método para armazenar uma nova transação
+    
      public function store(Request $request)
      {
          $validated = $request->validate([
@@ -32,15 +32,15 @@ class TransactionController extends Controller
  
          Transaction::create($validated);
  
-         return redirect('/')->with('success', 'Transação criada com sucesso!');
+         return redirect('/transactions/create');
      }
  
-     // 📌 Método para deletar uma transação
+    
      public function destroy($id)
      {
          $transaction = Transaction::findOrFail($id);
          $transaction->delete();
  
-         return redirect('/transactions')->with('success', 'Transação deletada com sucesso!');
+         return redirect('/transactions/create');
      }
 }

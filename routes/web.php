@@ -18,11 +18,12 @@ use App\Http\Controllers\TransactionController;
 Route::get('/', [CategoryController::class, 'index']);
 Route::get('/categories/create', [CategoryController::class, 'create'])->middleware('auth');
 Route::post('/categories', [CategoryController::class, 'store']);
+Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 
 Route::get('/transactions/create', [TransactionController::class, 'index']);
 Route::post('/transactions', [TransactionController::class, 'store']);
-// Route::delete('/transactions/create{id}', [TransactionController::class, 'destroy']);
+Route::delete('/transactions/{id}', [TransactionController::class, 'destroy'])->name('transactions.destroy');
 
 
 

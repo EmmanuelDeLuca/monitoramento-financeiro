@@ -1,66 +1,76 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Monitoramento Financeiro
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Descrição
 
-## About Laravel
+O **Monitoramento Financeiro** é uma aplicação web desenvolvida para criar transações financeiras, categorizando-as como **receita** ou **despesa**. O sistema permite ao usuário realizar o cadastro, listagem e exclusão de transações, além de gerenciar categorias e visualizar um resumo do seu histórico financeiro.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Funcionalidades
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Cadastro de Usuário**: O sistema permite que o usuário se cadastre para acessar o sistema e realizar o gerenciamento das suas finanças. Para isso, o projeto utiliza o Laravel Fortify para autenticação de usuários.
+- **Cadastro de Transações**: O usuário pode adicionar transações financeiras, especificando o tipo (receita ou despesa), valor e categoria.
+- **Listagem de Transações**: Visualize todas as transações cadastradas com detalhes como categoria, tipo e valor.
+- **Deleção de Transações**: O usuário pode excluir transações indesejadas.
+- **Cadastro de Categorias**: O sistema permite o gerenciamento de categorias, associando-as a transações específicas.
+- **Pesquisa de Categorias**: Busque por categorias específicas para facilitar a organização das transações.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Tecnologias Utilizadas
 
-## Learning Laravel
+- **PHP** ![PHP](https://img.shields.io/badge/-PHP-777BB4?style=flat&logo=php&logoColor=white)
+- **Laravel** ![Laravel](https://img.shields.io/badge/-Laravel-FF2D20?style=flat&logo=laravel&logoColor=white)
+- **MySQL** ![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat&logo=mysql&logoColor=white)
+- **Bootstrap** ![Bootstrap](https://img.shields.io/badge/-Bootstrap-563D7C?style=flat&logo=bootstrap&logoColor=white)
+- **Git** ![Git](https://img.shields.io/badge/-Git-F05032?style=flat&logo=git&logoColor=white)
+- **Composer** ![Composer](https://img.shields.io/badge/-Composer-2C3A2D?style=flat&logo=composer&logoColor=white)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Pré-requisitos
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Antes de rodar o projeto localmente, é necessário ter as seguintes ferramentas instaladas:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- [PHP](https://www.php.net/downloads) (versão 7.4 ou superior)
+- [Composer](https://getcomposer.org/download/)
+- [MySQL](https://dev.mysql.com/downloads/)
+- [Git](https://git-scm.com/downloads)
 
-## Laravel Sponsors
+## Como Rodar o Projeto
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. **Clonar o Repositório**
 
-### Premium Partners
+   Primeiro, clone o repositório para sua máquina local:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+   ```bash
+   git clone https://github.com/seu-usuario/monitoramento-financeiro.git
+   cd monitoramento-financeiro
 
-## Contributing
+2. **Instalar as Dependências**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+   Use o Composer para instalar as dependências PHP:
 
-## Code of Conduct
+   ```bash
+   composer install
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+3. **Configurar o Banco de Dados**
 
-## Security Vulnerabilities
+   Crie um banco de dados MySQL e configure as credenciais no arquivo .env:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+   ```bash
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=nome_do_banco
+   DB_USERNAME=seu_usuario
+   DB_PASSWORD=sua_senhao
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+4. **Rodar as Migrations**
+
+   Após configurar o banco de dados, rode as migrations para criar as tabelas necessárias:
+
+   ```bash
+   php artisan migrate
+
+5. **Rodar o Servidor**
+
+   Agora você pode rodar o servidor local:
+
+   ```bash
+   php artisan serve
